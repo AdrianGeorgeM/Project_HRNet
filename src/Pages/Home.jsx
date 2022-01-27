@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-import Modal from "../Pages/Modal";
+import Modal from "@adriangeorge/react-modal-plugin";
 import {
   Container,
   H1,

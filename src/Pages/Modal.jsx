@@ -46,7 +46,7 @@ function Modal({
       e.type === "keydown" &&
       (e.key === "Enter" || (escapeClose && e.key === "Escape"))
     ) {
-      console.log(e);
+      // console.log("h3y" + e);
       toggle();
     }
     unblock();
@@ -92,6 +92,7 @@ function Modal({
           <span
             style={{
               height: "100%",
+              border: "1px solid red",
             }}
           >
             +

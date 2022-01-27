@@ -1,13 +1,15 @@
 {
-  "name": "convert_a_jquery_library_to_react",
+  "name": "Adrian George - The King of the Jungle",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@adriangeorge/react-modal-plugin": "^0.1.1",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "datatables.net": "^1.11.4",
     "datatables.net-dt": "^1.11.4",
+    "gh-pages": "^3.2.3",
     "jquery": "^3.6.0",
     "jquery-datetimepicker": "^2.5.21",
     "jquery-ui": "^1.13.1",
