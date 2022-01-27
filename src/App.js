@@ -1,44 +1,55 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { useEffect } from "react";
+import Home from "./Pages/Home";
+import Employees from "./Pages/EmployeesPage";
+import React, { useReducer } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
-import Home from "./Pages/Home";
+import { reducer, initialState } from "./states/reducers";
 
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    font-family: 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     display: flex;
     justify-content: center;
+    box-sizing: border-box;
   }
   code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
   }
+
+  th {
+    font-size: 14px;
+  }
+  td {
+    font-size: 15px;
+  }
+
 `;
 
+export const AppContext = React.createContext();
 function App() {
-  useEffect(() => {
-    document.title = "HRnet";
-  });
+  const contextValue = useReducer(reducer, initialState);
+
   return (
     <>
-      <GlobalStyle />
-      <Router>
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
-          <Route path='employee-list'>
-            <div>Employees</div>
-          </Route>
-        </Switch>
-      </Router>
+      <AppContext.Provider value={contextValue}>
+        <GlobalStyle />
+        <Router basename={process.env.PUBLIC_URL}>
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
+            <Route path='/employee-list'>
+              <Employees />
+            </Route>
+          </Switch>
+        </Router>
+      </AppContext.Provider>
     </>
   );
 }
