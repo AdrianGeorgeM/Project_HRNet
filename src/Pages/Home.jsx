@@ -39,7 +39,7 @@ function Home(props) {
    * Redirect user to page /employee-list
    */
   const viewEmployees = () => {
-    history.push("/employee-list");
+    history.push("/employee-list"); // Redirect user to page /employee-list when button is clicked on Home page (Home.jsx)
   };
 
   /**
@@ -47,7 +47,7 @@ function Home(props) {
    * @param {Object} e - The event object
    */
   const handleChange = (e) => {
-    dispatch({ type: e.target.id, value: e.target.value });
+    dispatch({ type: e.target.id, value: e.target.value }); // Updates state.createEmployee with every input change (Home.jsx)
   };
 
   /**
@@ -56,34 +56,34 @@ function Home(props) {
    * Resets form input values to empty strings.
    * Changes showModal state to "true", to display modal.
    * Updates local storage with new list of employees
-   * @param {Object} e - The event object
    */
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = Object.values(state.createEmployee);
-    const newEmployeeList = [...state.employeeList, data];
-    dispatch({ type: "employeeList", value: newEmployeeList });
-    setShowModal(!showModal);
+    const data = Object.values(state.createEmployee); // Creates new updated employee list (Home.jsx)
+    const newEmployeeList = [...state.employeeList, data]; // Updates state.employeeList with new employee list (Home.jsx)
+    dispatch({ type: "employeeList", value: newEmployeeList }); // Resets form input values to empty strings (Home.jsx)
+    setShowModal(!showModal); // Changes showModal state to "true", to display modal (Home.jsx)
   };
 
   return (
     <>
       <Container>
         <H1>HRnet</H1>
-        <Button onClick={viewEmployees}>View Current Employees</Button>
+        <Button onClick={viewEmployees}>View Current Employees</Button>{" "}
+        {/* Redirect user to page /employee-list when button is clicked on Home page (Home.jsx) */}
       </Container>
       <Line />
       <FormContainer>
         <H2>CREATE EMPLOYEE</H2>
         <Form>
-          <Label htmlFor='first-name'>First Name</Label>
+          <Label htmlFor='first-name'>First Name</Label>{" "}
+          {/* Label for first name input (Home.jsx) */}
           <Input
             type='text'
             id='first-name'
             onChange={handleChange}
-            value={state.createEmployee.firstName}
+            value={state.createEmployee.firstName} // Sets value of first name input to state.createEmployee.firstName (Home.jsx)
           />
-
           <Label htmlFor='date-of-birth'>Last Name</Label>
           <Input
             type='text'
@@ -91,7 +91,6 @@ function Home(props) {
             onChange={handleChange}
             value={state.createEmployee.lastName}
           />
-
           <Label htmlFor='date-of-birth'>Date of Birth</Label>
           <Suspense fallback={<div>Loading...</div>}>
             <DatePickerInput
@@ -100,7 +99,6 @@ function Home(props) {
               value={state.createEmployee.dateOfBirth}
             ></DatePickerInput>
           </Suspense>
-
           <Label htmlFor='start-date'>Start Date</Label>
           <Suspense fallback={<div>Loading...</div>}>
             <DatePickerInput
@@ -109,7 +107,6 @@ function Home(props) {
               value={state.createEmployee.startDate}
             ></DatePickerInput>
           </Suspense>
-
           <Fieldset>
             <legend>Address</legend>
 
@@ -147,7 +144,6 @@ function Home(props) {
               value={state.createEmployee.zipCode}
             />
           </Fieldset>
-
           <Label htmlFor='department'>Department</Label>
           <Suspense fallback={<div>Loading...</div>}>
             <SelectInputField
@@ -158,7 +154,11 @@ function Home(props) {
             />
           </Suspense>
           <Button type='submit' onClick={handleSubmit}>
-            Save
+            {" "}
+            /* Creates new updated employee list. Updates state.employeeList
+            with new employee list. Resets form input values to empty strings.
+            Changes showModal state to "true", to display modal. Updates local
+            storage with new list of employees */ Save
           </Button>
           <Modal
             animation={true}

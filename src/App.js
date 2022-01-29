@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     monospace;
   }
 
-  th {
+  th { 
     font-size: 14px;
   }
   td {
@@ -31,20 +31,27 @@ const GlobalStyle = createGlobalStyle`
 
 `;
 
-export const AppContext = React.createContext();
+export const AppContext = React.createContext(); // create a context for the app  to use
 function App() {
-  const contextValue = useReducer(reducer, initialState);
+  const contextValue = useReducer(reducer, initialState); // use the reducer to create the context value  and pass the initial state  to it  and return the context value  and the dispatch function
 
   return (
     <>
       <AppContext.Provider value={contextValue}>
-        <GlobalStyle />
+        {" "}
+        {/* pass the context value to the provider  */}
+        <GlobalStyle />{" "}
+        {/* pass the global style to the global style component  */}
         <Router basename={process.env.PUBLIC_URL}>
+          {" "}
+          {/* pass the basename to the router  */}
           <Switch>
             <Route exact path='/'>
               <Home />
             </Route>
             <Route path='/employee-list'>
+              {" "}
+              {/* pass the path to the route  */}
               <Employees />
             </Route>
           </Switch>

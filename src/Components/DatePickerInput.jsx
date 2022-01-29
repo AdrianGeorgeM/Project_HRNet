@@ -13,6 +13,7 @@ function DatePickerInput(props) {
    * Object with target.id and target.value values passed in as argument to replace missing event object.
    */
   useEffect(() => {
+    // After component has mounted, jQuery plugin updates input field with datepicker functionality.
     const $elmt = $(elmt.current);
     $elmt.datetimepicker({
       timepicker: false,
@@ -24,7 +25,7 @@ function DatePickerInput(props) {
   });
 
   return (
-    <Input id={props.id} type='text' ref={elmt} value={props.value} readOnly />
+    <Input id={props.id} type='text' ref={elmt} value={props.value} readOnly /> // Input field with datepicker functionality.
   );
 }
 
